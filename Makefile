@@ -17,7 +17,7 @@ CC := gcc
 CFLAGS := -Wall -Werror -Wextra
 CPPFLAGS := $(addprefix -I, $(INCS)) -MMD -MP
 
-RM = rm -rf
+RM := rm -rf
 
 all: $(NAME)
 
