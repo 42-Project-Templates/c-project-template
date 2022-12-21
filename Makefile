@@ -30,11 +30,13 @@ address: re
 thread: CFLAGS += -fsanitize=thread -g
 thread: re
 
+print-%: ; @echo $* = $($*)
+
 $(NAME): $(BUILD_DIR) $(OBJS)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJS) -o $(NAME) $(LDFLAGS) $(LDLIBS)
 
 $(BUILD_DIR):
-	@mkdir -p $(BUILD_DIR)
+	@test -d $@ || mkdir -p $@
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
